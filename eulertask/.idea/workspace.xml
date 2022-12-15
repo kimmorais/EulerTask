@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="updating .gitignore files selection" />
+    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="xml files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Suit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Value.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +19,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -70,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671073050620</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="xml files">
+      <created>1671073100933</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1671073100933</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,6 +101,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial model classes" />
     <MESSAGE value="updating .gitignore files selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating .gitignore files selection" />
+    <MESSAGE value="xml files" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml files" />
   </component>
 </project>

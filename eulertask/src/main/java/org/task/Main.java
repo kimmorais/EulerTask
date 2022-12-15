@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         try (var inputStream = Main.class.getResourceAsStream("poker.txt")) {
+
+            var parser = new Parser(inputStream);
         }
     }
 }
