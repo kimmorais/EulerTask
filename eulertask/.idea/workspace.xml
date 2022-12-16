@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="improving enum classes, finalizing Parser class and creating Round class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/task/constants/SuitEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/task/constants/ValueEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Round.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/constants/Suit.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/constants/Value.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Suit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/constants/Suit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Value.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/constants/Value.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" afterDir="false" />
-    </list>
+    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="updating lombok version" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +127,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671157846005</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="improving enum classes, finalizing Parser class and creating Round class">
+      <created>1671208989751</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1671208989751</updated>
+    </task>
+    <task id="LOCAL-00009" summary="updating lombok version">
+      <created>1671209061051</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671209061051</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,14 +163,15 @@
     <MESSAGE value="testing parser class" />
     <MESSAGE value="updating .gitignore file" />
     <MESSAGE value="improving enum classes, finalizing Parser class and creating Round class" />
-    <option name="LAST_COMMIT_MESSAGE" value="improving enum classes, finalizing Parser class and creating Round class" />
+    <MESSAGE value="updating lombok version" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating lombok version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/task/Main.java</url>
-          <line>14</line>
+          <line>19</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
