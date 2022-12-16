@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="updating .gitignore file">
+    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="improving enum classes, finalizing Parser class and creating Round class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/task/constants/SuitEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/task/constants/ValueEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Round.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/constants/Suit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/constants/Value.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Suit.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/constants/Suit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Value.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/constants/Value.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +55,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Project.color&quot;: &quot;562b2a&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Project.color": "562b2a",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.task.Main" />
@@ -121,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671157168684</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updating .gitignore file">
+      <created>1671157846005</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1671157846005</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,20 +163,16 @@
     <MESSAGE value="changed Value and Suit classes to Enums and created a Parser class to convert from string to Hands of cards" />
     <MESSAGE value="testing parser class" />
     <MESSAGE value="updating .gitignore file" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating .gitignore file" />
+    <MESSAGE value="improving enum classes, finalizing Parser class and creating Round class" />
+    <option name="LAST_COMMIT_MESSAGE" value="improving enum classes, finalizing Parser class and creating Round class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/task/Main.java</url>
-          <line>13</line>
+          <line>14</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/task/Parser.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

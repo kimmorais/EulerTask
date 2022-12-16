@@ -1,6 +1,9 @@
 package org.task;
 
+import org.jetbrains.annotations.NotNull;
 import org.task.model.Card;
+import org.task.model.Hand;
+import org.task.model.Round;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,15 +23,26 @@ public class Parser {
         this.bufferedReader = new BufferedReader(new InputStreamReader(is));
     }
 
-    public List<List<Card>> getPlayerHands() throws IOException {
+    public Round getRound() throws IOException {
+
+        var cards = readCards();
+
+        var playerOneHand = getPlayerHand(cards, 0, 5);
+        var playerTwoHand = getPlayerHand(cards, 5, 10);
+
+        return new Round(playerOneHand, playerTwoHand);
+    }
+
+    private String[] readCards() throws IOException {
 
         var currentLine = bufferedReader.readLine();
-        var cards = currentLine.split(SPLIT);
+        return currentLine.split(SPLIT);
+    }
 
-        var playerOneHand = getCards(cards, 0, 5);
-        var playerTwoHand = getCards(cards, 5, 10);
+    @NotNull
+    private Hand getPlayerHand(String[] cards, int begin, int end) {
 
-        return List.of(playerOneHand, playerTwoHand);
+        return new Hand(getCards(cards, begin, end));
     }
 
     private List<Card> getCards(String[] cards, int begin, int end) {
@@ -42,5 +56,10 @@ public class Parser {
         }
 
         return listOfCards;
+    }
+
+    public Boolean hasNext() throws IOException {
+
+        return bufferedReader.ready();
     }
 }

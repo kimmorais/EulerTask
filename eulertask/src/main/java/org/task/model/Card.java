@@ -1,14 +1,14 @@
 package org.task.model;
 
-import org.task.constants.Suit;
-import org.task.constants.Value;
+import org.task.constants.SuitEnum;
+import org.task.constants.ValueEnum;
 
 public class Card {
 
-    private final Value value;
-    private final Suit suit;
+    private final ValueEnum value;
+    private final SuitEnum suit;
 
-    public Card(Value value, Suit suit) {
+    public Card(ValueEnum value, SuitEnum suit) {
 
         this.value = value;
         this.suit = suit;
@@ -16,14 +16,6 @@ public class Card {
 
     public Card(String s) {
 
-        this(Value.valueOf(s.charAt(0)), Suit.valueOf(s.charAt(1)));
-    }
-
-    public Value getValue() {
-        return value;
-    }
-
-    public Suit getSuit() {
-        return suit;
+        this(ValueEnum.fromValue(s.charAt(0)), SuitEnum.fromValue(s.charAt(1)));
     }
 }
