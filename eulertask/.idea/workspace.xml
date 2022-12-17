@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="updating lombok version">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Suit.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Value.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" afterDir="false" />
-    </list>
+    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="implementing comparator to sort cards in ascending value" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671209061051</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="implementing comparator to sort cards in ascending value">
+      <created>1671258541669</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1671258541669</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,7 +171,8 @@
     <MESSAGE value="updating .gitignore file" />
     <MESSAGE value="improving enum classes, finalizing Parser class and creating Round class" />
     <MESSAGE value="updating lombok version" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating lombok version" />
+    <MESSAGE value="implementing comparator to sort cards in ascending value" />
+    <option name="LAST_COMMIT_MESSAGE" value="implementing comparator to sort cards in ascending value" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -196,7 +194,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/task/Main.java</url>
-          <line>16</line>
+          <line>14</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
