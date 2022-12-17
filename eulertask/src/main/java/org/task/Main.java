@@ -1,15 +1,10 @@
 package org.task;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-@Slf4j
 public class Main {
-
-    private static final String PLAYER_ONE_WINS = "Player 1 wins %s hands!";
 
     public static void main(String[] args) throws IOException {
 
@@ -31,7 +26,7 @@ public class Main {
                 }
             }
 
-           log.info(String.format(PLAYER_ONE_WINS, count));
+            System.out.println("Player 1 wins " + count + " hands!");
         }
     }
 }

@@ -58,7 +58,7 @@ public class Parser {
         return listOfCards;
     }
 
-    public Boolean hasNext() throws IOException {
+    public boolean hasNext() throws IOException {
 
         return bufferedReader.ready();
     }

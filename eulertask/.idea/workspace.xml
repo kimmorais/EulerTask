@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="updating lombok version" />
+    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="updating lombok version">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Suit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/Value.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/model/Card.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -170,9 +180,29 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/task/HandHanking.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/task/CardValuesComparator.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/task/Parser.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/task/Main.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="1" />
+          <line>16</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/task/CardValuesComparator.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

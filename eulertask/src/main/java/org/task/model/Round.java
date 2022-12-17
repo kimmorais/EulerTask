@@ -10,7 +10,7 @@ public class Round {
         this.playerTwoHand = playerTwoHand;
     }
 
-    public Boolean playerOneWins() {
+    public boolean playerOneWins() {
 
         return true;
     }
