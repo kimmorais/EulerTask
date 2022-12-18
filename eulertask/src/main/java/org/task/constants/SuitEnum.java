@@ -1,7 +1,5 @@
 package org.task.constants;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-
 public enum SuitEnum {
 
     SPADES('S'),
@@ -19,7 +17,6 @@ public enum SuitEnum {
         return suitChar;
     }
 
-    @JsonCreator
     public static SuitEnum fromValue(char caracter) {
 
         for (SuitEnum s: SuitEnum.values()) {
