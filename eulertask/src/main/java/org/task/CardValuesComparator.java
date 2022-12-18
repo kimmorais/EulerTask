@@ -76,9 +76,4 @@ public class CardValuesComparator implements Comparator<Card> {
         return card.getValue().getValueChar() > 49
                 && card.getValue().getValueChar() < 58;
     }
-
-    public Boolean cardOneIsGreaterThanCardTwo(Card card1, Card card2) {
-
-        return compare(card1, card2) > 0;
-    }
 }

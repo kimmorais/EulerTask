@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="implementing comparator to sort cards in ascending value" />
+    <list default="true" id="ff1b202d-f167-4f20-b92c-ce5a09557049" name="Changes" comment="implementing comparator to sort cards in ascending value">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/CardValuesComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/CardValuesComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/HandHanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/HandHanking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/constants/ValueEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/constants/ValueEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/task/model/Round.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/task/model/Round.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/CardValuesComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/CardValuesComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/HandHanking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/HandHanking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/RankingEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/constants/RankingEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/constants/ValueEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/constants/ValueEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/task/model/Round.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/task/model/Round.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -46,7 +63,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "editor.preferences.appearance"
   }
 }]]></component>
   <component name="RunManager">
@@ -55,7 +72,7 @@
       <module name="eulertask" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.task.*" />
+          <option name="PATTERN" value="org.task.service.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -178,31 +195,26 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/task/HandHanking.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/task/CardValuesComparator.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/task/Parser.java</url>
           <line>27</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/task/Main.java</url>
-          <line>14</line>
-          <option name="timeStamp" value="6" />
+          <line>17</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/task/CardValuesComparator.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/main/java/org/task/Decider.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="pOneHandRankingValue" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

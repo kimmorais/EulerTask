@@ -13,14 +13,13 @@ public class Main {
         try (var inputStream = new FileInputStream(file)) {
 
             var parser = new Parser(inputStream);
-
             var count = 0;
 
             while (parser.hasNext()) {
 
                 var round = parser.getRound();
 
-                if (round.playerOneWins()) {
+                if (Decider.playerOneWins(round)) {
 
                     count++;
                 }
