@@ -9,8 +9,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Parser {
 
@@ -25,37 +25,27 @@ public class Parser {
 
     public Round getRound() throws IOException {
 
-        var cards = readCards();
+        var cards = getCards();
 
-        var playerOneHand = getPlayerHand(cards, 0, 5);
-        var playerTwoHand = getPlayerHand(cards, 5, 10);
+        var playerOneHand = getPlayerHand(cards.subList(0, 5));
+        var playerTwoHand = getPlayerHand(cards.subList(5, 10));
 
         return new Round(playerOneHand, playerTwoHand);
     }
 
-    private String[] readCards() throws IOException {
+    private List<Card> getCards() throws IOException {
 
         var currentLine = bufferedReader.readLine();
-        return currentLine.split(SPLIT);
+
+        return Stream.of(currentLine.split(SPLIT))
+                .map(Card::new)
+                .toList();
     }
 
     @NotNull
-    private Hand getPlayerHand(String[] cards, int begin, int end) {
+    private Hand getPlayerHand(List<Card> cards) {
 
-        return new Hand(getCards(cards, begin, end));
-    }
-
-    private List<Card> getCards(String[] cards, int begin, int end) {
-
-        var listOfCards = new ArrayList<Card>();
-
-        for (int i = begin; i < end; i++) {
-
-            var card = new Card(cards[i]);
-            listOfCards.add(card);
-        }
-
-        return listOfCards;
+        return new Hand(cards);
     }
 
     public boolean hasNext() throws IOException {

@@ -14,14 +14,14 @@ public class Hand {
 
     private ValueEnum highestValueRanking;
 
-    //TODO implement isOrderedflag and method
+    private boolean isOrdered;
 
     public Hand(List<Card> cards) {
 
-        cards.sort(new CardValuesComparator());
         this.cards = cards;
         this.rankingEnum = null;
         this.highestValueRanking = null;
+        this.isOrdered = false;
     }
 
     public List<Card> getCards() {
@@ -45,5 +45,16 @@ public class Hand {
     public void setHighestValueRanking(ValueEnum value) {
 
         this.highestValueRanking = value;
+    }
+
+    public Card getNCard(int cardNumber) {
+
+        if (Boolean.FALSE.equals(isOrdered)) {
+
+            this.cards.sort(new CardValuesComparator());
+            this.isOrdered = true;
+        }
+
+        return this.cards.get(cardNumber);
     }
 }

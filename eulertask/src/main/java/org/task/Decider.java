@@ -16,12 +16,12 @@ public class Decider {
         var pOneHand = round.playerOneHand();
         var pTwoHand = round.playerTwoHand();
         
-        var pOneRankingAndHighestValue = defineHanking(pOneHand.getCards());
+        var pOneRankingAndHighestValue = defineHanking(pOneHand);
 
         pOneHand.setRankingEnum((RankingEnum) pOneRankingAndHighestValue[0]);
         pOneHand.setHighestValueRanking(((Card) pOneRankingAndHighestValue[1]).getValue());
 
-        var pTwoRankingAndHighestValue = defineHanking(pTwoHand.getCards());
+        var pTwoRankingAndHighestValue = defineHanking(pTwoHand);
 
         pTwoHand.setRankingEnum((RankingEnum) pTwoRankingAndHighestValue[0]);
         pTwoHand.setHighestValueRanking(((Card) pTwoRankingAndHighestValue[1]).getValue());
@@ -75,8 +75,9 @@ public class Decider {
         return false;
     }
 
-    private static Object[] defineHanking(List<Card> cards) {
+    private static Object[] defineHanking(Hand hand) {
 
+        var cards = hand.getCards();
         var flush = isFlush(cards);
         var straight = isStraight(cards);
         var royal = isRoyal(cards);
@@ -84,20 +85,20 @@ public class Decider {
         if (flush) {
 
             if (royal) {
-                return new Object[]{RankingEnum.ROYAL_FLUSH, cards.get(4)};
+                return new Object[]{RankingEnum.ROYAL_FLUSH, hand.getNCard(4)};
             }
             if (straight) {
-                return new Object[]{RankingEnum.STRAIGHT_FLUSH, cards.get(4)};
+                return new Object[]{RankingEnum.STRAIGHT_FLUSH, hand.getNCard(4)};
             }
-            return new Object[]{RankingEnum.FLUSH, cards.get(4)};
+            return new Object[]{RankingEnum.FLUSH, hand.getNCard(4)};
         }
         if (straight) {
 
-            return new Object[]{RankingEnum.STRAIGHT, cards.get(4)};
+            return new Object[]{RankingEnum.STRAIGHT, hand.getNCard(4)};
         }
         if (isFourOfAKind(cards)) {
 
-            return new Object[]{RankingEnum.FOUR_OF_A_KIND, cards.get(2)};
+            return new Object[]{RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2)};
         }
 
         var isThreeOfAKind = isTreeOfAKind(cards);
@@ -125,10 +126,10 @@ public class Decider {
 
         if (isThreeOfAKind) {
 
-            return new Object[]{RankingEnum.THREE_OF_A_KIND, cards.get(2)};
+            return new Object[]{RankingEnum.THREE_OF_A_KIND, hand.getNCard(2)};
         }
 
-        return new Object[]{RankingEnum.HIGH_CARD, cards.get(4)};
+        return new Object[]{RankingEnum.HIGH_CARD, hand.getNCard(4)};
     }
 
     private static Card findHighestCard(List<Card> cards) {

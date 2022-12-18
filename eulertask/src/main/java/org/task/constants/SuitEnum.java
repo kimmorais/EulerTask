@@ -13,10 +13,6 @@ public enum SuitEnum {
         this.suitChar = suitChar;
     }
 
-    public char getSuitChar() {
-        return suitChar;
-    }
-
     public static SuitEnum fromValue(char caracter) {
 
         for (SuitEnum s: SuitEnum.values()) {
