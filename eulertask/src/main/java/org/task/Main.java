@@ -3,8 +3,12 @@ package org.task;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class Main {
+
+    private static final String PLAYER_ONE_WINS = "Player 1 wins %s hands!";
+    static Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws IOException {
 
@@ -25,7 +29,8 @@ public class Main {
                 }
             }
 
-            System.out.println("Player 1 wins " + count + " hands!");
+            var message = String.format(PLAYER_ONE_WINS, count);
+            logger.info(message);
         }
     }
 }
