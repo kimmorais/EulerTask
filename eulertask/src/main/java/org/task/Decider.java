@@ -2,9 +2,7 @@ package org.task;
 
 import org.task.constants.RankingEnum;
 import org.task.constants.ValueEnum;
-import org.task.model.Card;
-import org.task.model.Hand;
-import org.task.model.Round;
+import org.task.model.*;
 
 import java.util.List;
 
@@ -16,15 +14,15 @@ public class Decider {
         var pOneHand = round.playerOneHand();
         var pTwoHand = round.playerTwoHand();
         
-        var pOneRankingAndHighestValue = defineHanking(pOneHand);
+        var pOneRanking = defineHanking(pOneHand);
 
-        pOneHand.setRankingEnum((RankingEnum) pOneRankingAndHighestValue[0]);
-        pOneHand.setHighestValueRanking(((Card) pOneRankingAndHighestValue[1]).getValue());
+        pOneHand.setRankingEnum(pOneRanking.rankingEnum());
+        pOneHand.setHighestValueRanking(pOneRanking.card().getValue());
 
-        var pTwoRankingAndHighestValue = defineHanking(pTwoHand);
+        var pTwoRanking = defineHanking(pTwoHand);
 
-        pTwoHand.setRankingEnum((RankingEnum) pTwoRankingAndHighestValue[0]);
-        pTwoHand.setHighestValueRanking(((Card) pTwoRankingAndHighestValue[1]).getValue());
+        pTwoHand.setRankingEnum(pTwoRanking.rankingEnum());
+        pTwoHand.setHighestValueRanking(pTwoRanking.card().getValue());
 
         return decide(pOneHand, pTwoHand);
     }
@@ -75,7 +73,7 @@ public class Decider {
         return false;
     }
 
-    private static Object[] defineHanking(Hand hand) {
+    private static Ranking defineHanking(Hand hand) {
 
         var cards = hand.getCards();
         var flush = isFlush(cards);
@@ -85,20 +83,20 @@ public class Decider {
         if (flush) {
 
             if (royal) {
-                return new Object[]{RankingEnum.ROYAL_FLUSH, hand.getNCard(4)};
+                return createRanking(RankingEnum.ROYAL_FLUSH, hand.getNCard(4));
             }
             if (straight) {
-                return new Object[]{RankingEnum.STRAIGHT_FLUSH, hand.getNCard(4)};
+                return createRanking(RankingEnum.STRAIGHT_FLUSH, hand.getNCard(4));
             }
-            return new Object[]{RankingEnum.FLUSH, hand.getNCard(4)};
+            return createRanking(RankingEnum.FLUSH, hand.getNCard(4));
         }
         if (straight) {
 
-            return new Object[]{RankingEnum.STRAIGHT, hand.getNCard(4)};
+            return createRanking(RankingEnum.STRAIGHT, hand.getNCard(4));
         }
         if (isFourOfAKind(cards)) {
 
-            return new Object[]{RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2)};
+            return createRanking(RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2));
         }
 
         var isThreeOfAKind = isTreeOfAKind(cards);
@@ -108,28 +106,28 @@ public class Decider {
             if (isThreeOfAKind) {
 
                 var card = findHighestCard(cards);
-                return new Object[]{RankingEnum.FULL_HOUSE, card};
+                return createRanking(RankingEnum.FULL_HOUSE, card);
             }
 
             var pairs = howManyPairs(cards);
-            var pairQuantity = (Integer) pairs[0];
-            var card = (Card) pairs[1];
+            var pairsCount = pairs.pairsCount();
+            var card = pairs.highestValueCard();
 
-            if (pairQuantity == 1) {
+            if (pairsCount == 1) {
 
-                return new Object[]{RankingEnum.PAIR, card};
+                return createRanking(RankingEnum.PAIR, card);
             }
-            if (pairQuantity == 2) {
-                    return new Object[]{RankingEnum.TWO_PAIRS, card};
+            if (pairsCount == 2) {
+                    return createRanking(RankingEnum.TWO_PAIRS, card);
             }
         }
 
         if (isThreeOfAKind) {
 
-            return new Object[]{RankingEnum.THREE_OF_A_KIND, hand.getNCard(2)};
+            return createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2));
         }
 
-        return new Object[]{RankingEnum.HIGH_CARD, hand.getNCard(4)};
+        return createRanking(RankingEnum.HIGH_CARD, hand.getNCard(4));
     }
 
     private static Card findHighestCard(List<Card> cards) {
@@ -226,7 +224,7 @@ public class Decider {
                 || thirdCardValue == fifthCardValue;
     }
 
-    private static Object[] howManyPairs(List<Card> cards) {
+    private static Pairs howManyPairs(List<Card> cards) {
 
         var countPairs = 0;
         Card highestCardValue = null;
@@ -250,10 +248,15 @@ public class Decider {
             }
         }
 
-        return new Object[]{countPairs, highestCardValue};
+        return new Pairs(countPairs, highestCardValue);
     }
 
     private static boolean currentCardGreaterThanHighestCard(Integer highestCardValue, Integer currentCardValue) {
         return highestCardValue < currentCardValue;
+    }
+
+    private static Ranking createRanking(RankingEnum rankingEnum, Card card) {
+
+        return new Ranking(rankingEnum, card);
     }
 }
