@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Parser {
@@ -39,7 +40,7 @@ public class Parser {
 
         return Stream.of(currentLine.split(SPLIT))
                 .map(Card::new)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @NotNull
