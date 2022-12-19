@@ -5,19 +5,29 @@ import org.task.model.Round;
 
 public class Decider {
 
-    private Decider() {}
+    private final RankingDefiner rankingDefiner;
 
-    public static boolean playerOneWins(Round round) {
+    public Decider() {
+
+        this(new RankingDefiner());
+    }
+
+    public Decider(RankingDefiner rankingDefiner) {
+
+        this.rankingDefiner = rankingDefiner;
+    }
+
+    public boolean playerOneWins(Round round) {
 
         var pOneHand = round.playerOneHand();
         var pTwoHand = round.playerTwoHand();
         
-        var pOneRanking = RankingDefiner.defineRanking(pOneHand);
+        var pOneRanking = rankingDefiner.defineRanking(pOneHand);
 
         pOneHand.setRankingEnum(pOneRanking.rankingEnum());
         pOneHand.setHighestValueRanking(pOneRanking.card().getValue());
 
-        var pTwoRanking = RankingDefiner.defineRanking(pTwoHand);
+        var pTwoRanking = rankingDefiner.defineRanking(pTwoHand);
 
         pTwoHand.setRankingEnum(pTwoRanking.rankingEnum());
         pTwoHand.setHighestValueRanking(pTwoRanking.card().getValue());
@@ -25,7 +35,7 @@ public class Decider {
         return decide(pOneHand, pTwoHand);
     }
 
-    private static boolean decide(Hand pOneHand, Hand pTwoHand) {
+    private boolean decide(Hand pOneHand, Hand pTwoHand) {
 
         var pOneHandRankingValue = pOneHand.getRankingEnum().getValue();
         var pTwoHandRankingvalue = pTwoHand.getRankingEnum().getValue();
@@ -41,7 +51,7 @@ public class Decider {
         return false;
     }
 
-    private static boolean decideEquality(Hand pOneHand, Hand pTwoHand) {
+    private boolean decideEquality(Hand pOneHand, Hand pTwoHand) {
 
         var pOneCardValue = pOneHand.getHighestValueRanking().getValueOrdinal();
         var pTwoCardValue = pTwoHand.getHighestValueRanking().getValueOrdinal();

@@ -10,6 +10,18 @@ public class Problem {
     private static final String PLAYER_ONE_WINS = "Player 1 wins %s hands!";
     private final Logger logger = getLogger(Problem.class.getName());
 
+    private final Decider decider;
+
+    public Problem() {
+
+        this(new Decider());
+    }
+
+    public Problem(Decider decider) {
+
+        this.decider = decider;
+    }
+
     public void solve() throws IOException {
 
         var file = new File("C:\\poker.txt");
@@ -36,7 +48,7 @@ public class Problem {
 
         var round = parser.getRound();
 
-        if (Decider.playerOneWins(round)) {
+        if (decider.playerOneWins(round)) {
 
             count++;
         }

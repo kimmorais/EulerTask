@@ -8,9 +8,7 @@ import org.task.model.Ranking;
 
 public class FlushOrStraight {
 
-    private FlushOrStraight() {}
-
-    public static Ranking get(Hand hand) {
+    public Ranking get(Hand hand) {
 
         var flush = isFlush(hand);
         var straight = isStraight(hand);
@@ -35,7 +33,7 @@ public class FlushOrStraight {
         return null;
     }
 
-    private static boolean isFlush(Hand hand) {
+    private boolean isFlush(Hand hand) {
 
         for (int i = 0; i < 4; i++) {
 
@@ -51,7 +49,7 @@ public class FlushOrStraight {
         return true;
     }
 
-    private static boolean isStraight(Hand hand) {
+    private boolean isStraight(Hand hand) {
 
         for (int i = 0; i < 4; i++) {
 
@@ -67,7 +65,7 @@ public class FlushOrStraight {
         return true;
     }
 
-    private static boolean isRoyal(Hand hand) {
+    private boolean isRoyal(Hand hand) {
 
         return hand.getNCard(0).getValue() == ValueEnum.TEN
                 && hand.getNCard(1).getValue() == ValueEnum.JACK
@@ -76,7 +74,7 @@ public class FlushOrStraight {
                 && hand.getNCard(4).getValue() == ValueEnum.ACE;
     }
 
-    private static Ranking createRanking(RankingEnum rankingEnum, Card card) {
+    private Ranking createRanking(RankingEnum rankingEnum, Card card) {
 
         return new Ranking(rankingEnum, card);
     }

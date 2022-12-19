@@ -8,9 +8,7 @@ import org.task.model.Ranking;
 
 public class PairOrKind {
 
-    private PairOrKind() {}
-
-    public static Ranking get(Hand hand) {
+    public Ranking get(Hand hand) {
 
         if (isFourOfAKind(hand)) {
 
@@ -48,7 +46,7 @@ public class PairOrKind {
         return null;
     }
 
-    private static boolean isFourOfAKind(Hand hand) {
+    private boolean isFourOfAKind(Hand hand) {
 
         var firstCardValue = hand.getNCard(0).getValue();
         var fourthCardValue = hand.getNCard(3).getValue();
@@ -58,7 +56,7 @@ public class PairOrKind {
         return firstCardValue == fourthCardValue || secondCardValue == fifthCardValue;
     }
 
-    private static boolean isPair(Hand hand) {
+    private boolean isPair(Hand hand) {
 
         for (int i = 0; i < 4; i++) {
 
@@ -73,7 +71,7 @@ public class PairOrKind {
         return false;
     }
 
-    private static Card findHighestCard(Hand hand) {
+    private Card findHighestCard(Hand hand) {
 
         var highestCard = hand.getNCard(0);
 
@@ -88,7 +86,7 @@ public class PairOrKind {
         return highestCard;
     }
 
-    private static boolean isTreeOfAKind(Hand hand) {
+    private boolean isTreeOfAKind(Hand hand) {
 
         var firstCardValue = hand.getNCard(0).getValue();
         var secondCardValue = hand.getNCard(1).getValue();
@@ -101,7 +99,7 @@ public class PairOrKind {
                 || thirdCardValue == fifthCardValue;
     }
 
-    private static Pairs howManyPairs(Hand hand) {
+    private Pairs howManyPairs(Hand hand) {
 
         var countPairs = 0;
         Card highestCardValue = null;
@@ -128,12 +126,12 @@ public class PairOrKind {
         return new Pairs(countPairs, highestCardValue);
     }
 
-    private static boolean currentCardGreaterThanHighestCard(Integer highestCardValue, Integer currentCardValue) {
+    private boolean currentCardGreaterThanHighestCard(Integer highestCardValue, Integer currentCardValue) {
 
         return highestCardValue < currentCardValue;
     }
 
-    private static Ranking createRanking(RankingEnum rankingEnum, Card card) {
+    private Ranking createRanking(RankingEnum rankingEnum, Card card) {
 
         return new Ranking(rankingEnum, card);
     }

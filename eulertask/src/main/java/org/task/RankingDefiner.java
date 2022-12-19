@@ -7,12 +7,24 @@ import org.task.model.Ranking;
 
 public class RankingDefiner {
 
-    private RankingDefiner() {}
+    private final FlushOrStraight flushOrStraight;
+    private final PairOrKind pairOrKind;
 
-    public static Ranking defineRanking(Hand hand) {
+    public RankingDefiner() {
 
-        var rankingFlushOrStraight = FlushOrStraight.get(hand);
-        var rankingPairOrKind = PairOrKind.get(hand);
+        this(new FlushOrStraight(), new PairOrKind());
+    }
+
+    public RankingDefiner(FlushOrStraight flushOrStraight, PairOrKind pairOrKind) {
+
+        this.flushOrStraight = flushOrStraight;
+        this.pairOrKind = pairOrKind;
+    }
+
+    public Ranking defineRanking(Hand hand) {
+
+        var rankingFlushOrStraight = flushOrStraight.get(hand);
+        var rankingPairOrKind = pairOrKind.get(hand);
 
         var rankingNonNull = getNonNull(rankingFlushOrStraight, rankingPairOrKind);
 
@@ -21,7 +33,7 @@ public class RankingDefiner {
                 : createRanking(hand.getNCard(4));
     }
 
-    public static Ranking getNonNull(Ranking ...items) {
+    private Ranking getNonNull(Ranking ...items) {
 
         for(Ranking r : items) {
 
@@ -34,7 +46,7 @@ public class RankingDefiner {
         return null;
     }
 
-    private static Ranking createRanking(Card card) {
+    private Ranking createRanking(Card card) {
 
         return new Ranking(RankingEnum.HIGH_CARD, card);
     }
