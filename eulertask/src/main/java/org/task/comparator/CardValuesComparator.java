@@ -1,4 +1,4 @@
-package org.task;
+package org.task.comparator;
 
 import org.task.model.Card;
 

@@ -1,6 +1,6 @@
 package org.task.model;
 
-import org.task.CardValuesComparator;
+import org.task.comparator.CardValuesComparator;
 import org.task.constants.RankingEnum;
 import org.task.constants.ValueEnum;
 
