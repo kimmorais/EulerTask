@@ -1,14 +1,10 @@
 package org.task.solution;
 
 import org.task.constants.RankingEnum;
-import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Pairs;
 import org.task.model.Ranking;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class PairOrKind {
 
@@ -102,7 +98,6 @@ public class PairOrKind {
 
         var countPairs = 0;
         Card highestCardValue = null;
-        Set<ValueEnum> set = new HashSet<>();
 
         for (int i = 0; i < 4; i++) {
 
@@ -110,17 +105,11 @@ public class PairOrKind {
             var nextCardValue = hand.getNCard(i + 1).getValue();
 
             if (currentCardValue == nextCardValue)  {
-                if (set.isEmpty()) {
 
-                    set.add(currentCardValue);
-                    highestCardValue = hand.getNCard(i);
-                    countPairs++;
-                } else if (!set.contains(currentCardValue)) {
-
-                    set.add(currentCardValue);
-                    highestCardValue = getHighestCard(highestCardValue, hand.getNCard(i));
-                    countPairs++;
-                }
+                countPairs++;
+                highestCardValue = highestCardValue == null ?
+                        hand.getNCard(i) :
+                        getHighestCard(highestCardValue, hand.getNCard(i));
             }
         }
 
