@@ -22,6 +22,7 @@ public class FlushOrStraight {
             if (straight) {
                 return createRanking(RankingEnum.STRAIGHT_FLUSH, hand.getNCard(4));
             }
+
             return createRanking(RankingEnum.FLUSH, hand.getNCard(4));
         }
 

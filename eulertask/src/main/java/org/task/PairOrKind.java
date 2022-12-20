@@ -1,10 +1,14 @@
 package org.task;
 
 import org.task.constants.RankingEnum;
+import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Pairs;
 import org.task.model.Ranking;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class PairOrKind {
 
@@ -15,17 +19,18 @@ public class PairOrKind {
             return createRanking(RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2));
         }
 
-        var isThreeOfAKind = isTreeOfAKind(hand);
+        if (isTreeOfAKind(hand)) {
+            if (isFullHouse(hand)) {
+
+                return createRanking(RankingEnum.FULL_HOUSE, hand.getNCard(4));
+            }
+
+            return createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2));
+        }
 
         if (isPair(hand)) {
 
-            if (isThreeOfAKind) {
-
-                var card = findHighestCard(hand);
-                return createRanking(RankingEnum.FULL_HOUSE, card);
-            }
-
-            var pairs = howManyPairs(hand);
+            var pairs = countPairs(hand);
             var pairsCount = pairs.pairsCount();
             var card = pairs.highestValueCard();
 
@@ -38,12 +43,19 @@ public class PairOrKind {
             }
         }
 
-        if (isThreeOfAKind) {
-
-            return createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2));
-        }
-
         return null;
+    }
+
+    private boolean isFullHouse(Hand hand) {
+
+        var firstCardValue = hand.getNCard(0).getValue();
+        var secondCardValue = hand.getNCard(1).getValue();
+        var thirdCardValue = hand.getNCard(2).getValue();
+        var fourthCardValue = hand.getNCard(3).getValue();
+        var fifthCardValue = hand.getNCard(4).getValue();
+
+        return (firstCardValue == thirdCardValue && fourthCardValue == fifthCardValue)
+                || (firstCardValue == secondCardValue && thirdCardValue == fifthCardValue);
     }
 
     private boolean isFourOfAKind(Hand hand) {
@@ -71,21 +83,6 @@ public class PairOrKind {
         return false;
     }
 
-    private Card findHighestCard(Hand hand) {
-
-        var highestCard = hand.getNCard(0);
-
-        for (int i = 1; i < 5; i++) {
-
-            if (highestCard.getValue().getValueOrdinal() < hand.getNCard(i).getValue().getValueOrdinal()) {
-
-                highestCard = hand.getNCard(i);
-            }
-        }
-
-        return highestCard;
-    }
-
     private boolean isTreeOfAKind(Hand hand) {
 
         var firstCardValue = hand.getNCard(0).getValue();
@@ -99,10 +96,11 @@ public class PairOrKind {
                 || thirdCardValue == fifthCardValue;
     }
 
-    private Pairs howManyPairs(Hand hand) {
+    private Pairs countPairs(Hand hand) {
 
         var countPairs = 0;
         Card highestCardValue = null;
+        Set<ValueEnum> set = new HashSet<>();
 
         for (int i = 0; i < 4; i++) {
 
@@ -110,15 +108,16 @@ public class PairOrKind {
             var nextCardValue = hand.getNCard(i + 1).getValue();
 
             if (currentCardValue == nextCardValue)  {
+                if (set.isEmpty()) {
 
-                countPairs++;
-                if (highestCardValue == null) {
-
+                    set.add(currentCardValue);
                     highestCardValue = hand.getNCard(i);
-                }
-                if (highestCardValue != null && currentCardGreaterThanHighestCard(highestCardValue.getValue().getValueOrdinal(), currentCardValue.getValueOrdinal())) {
+                    countPairs++;
+                } else if (!set.contains(currentCardValue)) {
 
-                    highestCardValue = hand.getNCard(i);
+                    set.add(currentCardValue);
+                    highestCardValue = getHighestCard(highestCardValue, hand.getNCard(i));
+                    countPairs++;
                 }
             }
         }
@@ -126,9 +125,11 @@ public class PairOrKind {
         return new Pairs(countPairs, highestCardValue);
     }
 
-    private boolean currentCardGreaterThanHighestCard(Integer highestCardValue, Integer currentCardValue) {
+    private static Card getHighestCard(Card highestCardValue, Card currentCard) {
 
-        return highestCardValue < currentCardValue;
+        return highestCardValue.getValue().getValueOrdinal() > currentCard.getValue().getValueOrdinal() ?
+                highestCardValue :
+                currentCard;
     }
 
     private Ranking createRanking(RankingEnum rankingEnum, Card card) {
