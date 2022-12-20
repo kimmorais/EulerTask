@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import org.task.model.Hand;
 import org.task.model.Round;
@@ -32,15 +32,16 @@ public class Decider {
         pTwoHand.setRankingEnum(pTwoRanking.rankingEnum());
         pTwoHand.setHighestValueRanking(pTwoRanking.card().getValue());
 
-        return decide(pOneHand, pTwoHand);
+        return winner(pOneHand, pTwoHand);
     }
 
-    private boolean decide(Hand pOneHand, Hand pTwoHand) {
+    private boolean winner(Hand pOneHand, Hand pTwoHand) {
 
         var pOneHandRankingValue = pOneHand.getRankingEnum().getValue();
         var pTwoHandRankingvalue = pTwoHand.getRankingEnum().getValue();
 
         if (pOneHandRankingValue > pTwoHandRankingvalue) {
+
             return true;
         }
         if (pOneHandRankingValue.equals(pTwoHandRankingvalue)) {

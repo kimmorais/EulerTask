@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

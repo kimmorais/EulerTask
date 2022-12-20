@@ -1,5 +1,7 @@
 package org.task;
 
+import org.task.solution.Problem;
+
 import java.io.IOException;
 
 public class Main {

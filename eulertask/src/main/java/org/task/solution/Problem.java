@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import java.io.*;
 import java.util.logging.Logger;

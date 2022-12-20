@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import org.task.constants.RankingEnum;
 import org.task.model.Card;

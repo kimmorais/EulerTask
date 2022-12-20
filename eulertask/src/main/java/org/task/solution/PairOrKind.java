@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import org.task.constants.RankingEnum;
 import org.task.constants.ValueEnum;
@@ -39,6 +39,7 @@ public class PairOrKind {
                 return createRanking(RankingEnum.PAIR, card);
             }
             if (pairsCount == 2) {
+
                 return createRanking(RankingEnum.TWO_PAIRS, card);
             }
         }
@@ -76,6 +77,7 @@ public class PairOrKind {
             var nextCardValue = hand.getNCard(i + 1).getValue();
 
             if (currentCardValue == nextCardValue)  {
+
                 return true;
             }
         }

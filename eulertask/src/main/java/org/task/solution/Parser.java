@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import org.jetbrains.annotations.NotNull;
 import org.task.model.Card;

@@ -1,4 +1,4 @@
-package org.task;
+package org.task.solution;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
