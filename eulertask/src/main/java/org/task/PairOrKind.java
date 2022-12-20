@@ -22,7 +22,7 @@ public class PairOrKind {
         if (isTreeOfAKind(hand)) {
             if (isFullHouse(hand)) {
 
-                return createRanking(RankingEnum.FULL_HOUSE, hand.getNCard(4));
+                return createRanking(RankingEnum.FULL_HOUSE, hand.getNCard(2));
             }
 
             return createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2));

@@ -46,7 +46,7 @@ class PairOrKindTest {
     void get_validHandForFullHouse_returnFullHouseRanking() {
 
         hand = buildHand(THREE, THREE, THREE, FIVE, FIVE);
-        var expectedRanking = buildExpectedRanking(FULL_HOUSE, getCard(FIVE));
+        var expectedRanking = buildExpectedRanking(FULL_HOUSE, getCard(THREE));
 
         var result = pairOrKind.get(hand);
 
