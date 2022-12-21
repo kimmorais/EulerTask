@@ -1,5 +1,7 @@
 package org.task.solution;
 
+import org.task.environment_variables.EnvVarRetriever;
+
 import java.io.*;
 import java.util.logging.Logger;
 
@@ -19,7 +21,7 @@ public class Problem {
 
     public void solve() throws IOException {
 
-        var file = new File("C:\\poker.txt");
+        var file = new File(EnvVarRetriever.retrievePokerFileFullPath());
 
         try (var inputStream = new FileInputStream(file)) {
 
