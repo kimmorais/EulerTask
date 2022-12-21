@@ -1,4 +1,4 @@
-package org.task.solution;
+package org.task.solution.processing.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -13,15 +13,12 @@ import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
-import org.task.solution.interfaces.impl.FlushOrStraightImpl;
-import org.task.solution.interfaces.impl.PairOrKindImpl;
-import org.task.solution.interfaces.impl.RankingDefinerImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)

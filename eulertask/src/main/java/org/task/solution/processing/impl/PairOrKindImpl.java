@@ -1,11 +1,11 @@
-package org.task.solution.interfaces.impl;
+package org.task.solution.processing.impl;
 
 import org.task.constants.RankingEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Pairs;
 import org.task.model.Ranking;
-import org.task.solution.interfaces.PairOrKind;
+import org.task.solution.processing.PairOrKind;
 
 import java.util.Optional;
 

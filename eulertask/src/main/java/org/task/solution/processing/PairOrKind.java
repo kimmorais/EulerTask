@@ -1,4 +1,4 @@
-package org.task.solution.interfaces;
+package org.task.solution.processing;
 
 import org.task.model.Hand;
 import org.task.model.Ranking;

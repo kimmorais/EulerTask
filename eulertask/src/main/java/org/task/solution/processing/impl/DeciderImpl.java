@@ -1,9 +1,9 @@
-package org.task.solution.interfaces.impl;
+package org.task.solution.processing.impl;
 
 import org.task.model.Hand;
 import org.task.model.Round;
-import org.task.solution.interfaces.Decider;
-import org.task.solution.interfaces.RankingDefiner;
+import org.task.solution.processing.Decider;
+import org.task.solution.processing.RankingDefiner;
 
 public class DeciderImpl implements Decider {
 
