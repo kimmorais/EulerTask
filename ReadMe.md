@@ -1,7 +1,7 @@
 # EulerTask
 This repository is made for the Coding Task of Project Euler #54 Poker hands
 
-## Before running the project, please update the File path in the environment variables (depending on your machine), so the code can work properly!
+## Before running the project, please update the File path (depending on your machine) in the environment variables, so the code can work properly!
 
 ## How the solution works
 
