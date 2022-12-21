@@ -9,6 +9,7 @@ import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
+import org.task.solution.interfaces.impl.PairOrKindImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +19,15 @@ import static org.task.constants.RankingEnum.*;
 import static org.task.constants.ValueEnum.*;
 import static org.task.constants.ValueEnum.FIVE;
 
-class PairOrKindTest {
+class PairOrKindImplTest {
 
     private Hand hand;
-    private PairOrKind pairOrKind;
+    private PairOrKindImpl pairOrKind;
 
     @BeforeEach
     void setUp() {
 
-        pairOrKind = new PairOrKind();
+        pairOrKind = new PairOrKindImpl();
     }
 
     @Test

@@ -14,6 +14,8 @@ import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
 import org.task.model.Round;
+import org.task.solution.interfaces.impl.DeciderImpl;
+import org.task.solution.interfaces.impl.RankingDefinerImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +25,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class DeciderTest {
+class DeciderImplTest {
 
     private Round round;
 
     @Mock
-    private RankingDefiner rankingDefiner;
+    private RankingDefinerImpl rankingDefiner;
 
     @InjectMocks
-    private Decider decider;
+    private DeciderImpl decider;
 
     @BeforeEach
     void setUp() {

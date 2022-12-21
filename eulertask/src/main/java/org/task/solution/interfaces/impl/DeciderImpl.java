@@ -1,13 +1,15 @@
-package org.task.solution;
+package org.task.solution.interfaces.impl;
 
 import org.task.model.Hand;
 import org.task.model.Round;
+import org.task.solution.interfaces.Decider;
+import org.task.solution.interfaces.RankingDefiner;
 
-public class Decider {
+public class DeciderImpl implements Decider {
 
     private final RankingDefiner rankingDefiner;
 
-    public Decider(RankingDefiner rankingDefiner) {
+    public DeciderImpl(RankingDefiner rankingDefiner) {
 
         this.rankingDefiner = rankingDefiner;
     }

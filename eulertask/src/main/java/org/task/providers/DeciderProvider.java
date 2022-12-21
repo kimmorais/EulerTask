@@ -3,7 +3,7 @@ package org.task.providers;
 import org.task.factories.DeciderFactory;
 import org.task.factories.FlushOrStraightFactory;
 import org.task.factories.RankingDefinerFactory;
-import org.task.solution.Decider;
+import org.task.solution.interfaces.Decider;
 
 public class DeciderProvider {
 

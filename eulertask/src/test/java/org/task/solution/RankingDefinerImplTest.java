@@ -13,31 +13,35 @@ import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
+import org.task.solution.interfaces.impl.FlushOrStraightImpl;
+import org.task.solution.interfaces.impl.PairOrKindImpl;
+import org.task.solution.interfaces.impl.RankingDefinerImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class RankingDefinerTest {
+class RankingDefinerImplTest {
 
     private Hand hand;
 
     @Mock
-    private FlushOrStraight flushOrStraight;
+    private FlushOrStraightImpl flushOrStraight;
 
     @Mock
-    private PairOrKind pairOrKind;
+    private PairOrKindImpl pairOrKind;
 
     @InjectMocks
-    private RankingDefiner rankingDefiner;
+    private RankingDefinerImpl rankingDefiner;
 
     @BeforeEach
     void setUp() {
 
-        rankingDefiner = new RankingDefiner(flushOrStraight, pairOrKind);
+        rankingDefiner = new RankingDefinerImpl(flushOrStraight, pairOrKind);
         hand = buildHand();
     }
 
@@ -47,7 +51,7 @@ class RankingDefinerTest {
 
         var straightFlushRanking = createStraightFlushRanking();
 
-        when(flushOrStraight.get(hand)).thenReturn(straightFlushRanking);
+        when(flushOrStraight.get(hand)).thenReturn(Optional.of(straightFlushRanking));
         when(pairOrKind.get(hand)).thenReturn(null);
 
         var result = rankingDefiner.defineRanking(hand);
@@ -62,7 +66,7 @@ class RankingDefinerTest {
         var threeOfAKindRanking = createThreeOfAKindRanking();
 
         when(flushOrStraight.get(hand)).thenReturn(null);
-        when(pairOrKind.get(hand)).thenReturn(threeOfAKindRanking);
+        when(pairOrKind.get(hand)).thenReturn(Optional.of(threeOfAKindRanking));
 
         var result = rankingDefiner.defineRanking(hand);
 

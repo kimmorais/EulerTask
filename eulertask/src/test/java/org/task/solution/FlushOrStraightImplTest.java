@@ -12,6 +12,7 @@ import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
+import org.task.solution.interfaces.impl.FlushOrStraightImpl;
 import org.task.solution.ranking_validators.flush.FlushValidator;
 import org.task.solution.ranking_validators.royal.RoyalValidator;
 import org.task.solution.ranking_validators.straight.StraightValidator;
@@ -26,7 +27,7 @@ import static org.task.constants.RankingEnum.*;
 import static org.task.constants.ValueEnum.*;
 
 @ExtendWith(MockitoExtension.class)
-class FlushOrStraightTest {
+class FlushOrStraightImplTest {
 
     private Hand hand;
 
@@ -40,7 +41,7 @@ class FlushOrStraightTest {
     private RoyalValidator royalValidator;
 
     @InjectMocks
-    private FlushOrStraight flushOrStraight;
+    private FlushOrStraightImpl flushOrStraight;
 
     @Test
     @DisplayName("Given a valid hand for ROYAL_FLUSH, should return Ranking with this enum and the higher card inside")

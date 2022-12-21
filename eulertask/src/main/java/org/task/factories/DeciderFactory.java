@@ -1,7 +1,8 @@
 package org.task.factories;
 
-import org.task.solution.Decider;
-import org.task.solution.RankingDefiner;
+import org.task.solution.interfaces.Decider;
+import org.task.solution.interfaces.RankingDefiner;
+import org.task.solution.interfaces.impl.DeciderImpl;
 
 public class DeciderFactory {
 
@@ -9,6 +10,6 @@ public class DeciderFactory {
 
     public static Decider newInstance(RankingDefiner rankingDefiner) {
 
-        return new Decider(rankingDefiner);
+        return new DeciderImpl(rankingDefiner);
     }
 }

@@ -1,6 +1,7 @@
 package org.task.solution;
 
 import org.task.environment_variables.EnvVarRetriever;
+import org.task.solution.interfaces.Decider;
 
 import java.io.*;
 import java.util.logging.Logger;
