@@ -1,6 +1,7 @@
 package org.task.solution.ranking_validators.flush.impl;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.task.constants.SuitEnum;
 import org.task.constants.ValueEnum;
@@ -25,6 +26,7 @@ class FlushValidatorImplTest {
     }
 
     @Test
+    @DisplayName("Given a compatible hand with Flush, should return true")
     void isCompatibleWith_compatibleHand_returnTrue() {
 
         this.hand = buildHand();
@@ -35,6 +37,7 @@ class FlushValidatorImplTest {
     }
 
     @Test
+    @DisplayName("Given a non-compatible hand with Flush, should return false")
     void isCompatibleWith_notCompatibleHand_return_false() {
 
         this.hand = buildHandNotFlush();
