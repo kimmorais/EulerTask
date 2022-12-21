@@ -66,7 +66,7 @@ public class Decider {
             var pOneCards = pOneHand.getCards();
             var pTwoCards = pTwoHand.getCards();
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 4; i >= 0; i--) {
 
                 var pOneHighestCardValue = pOneCards.get(i).getValue().getValueOrdinal();
                 var pTwoHighestCardValue = pTwoCards.get(i).getValue().getValueOrdinal();
