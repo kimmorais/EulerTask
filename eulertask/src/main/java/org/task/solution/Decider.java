@@ -14,67 +14,62 @@ public class Decider {
 
     public boolean playerOneWins(Round round) {
 
-        var pOneHand = round.playerOneHand();
-        var pTwoHand = round.playerTwoHand();
-        
-        var pOneRanking = rankingDefiner.defineRanking(pOneHand);
+        var playerOne = round.playerOneHand();
+        var playerTwo = round.playerTwoHand();
+        this.attachRankingTo(playerOne);
+        this.attachRankingTo(playerTwo);
 
-        pOneHand.setRankingEnum(pOneRanking.rankingEnum());
-        pOneHand.setHighestValueRanking(pOneRanking.card().getValue());
+        if (this.isADrawBasedOnRankingBetween(playerOne, playerTwo)) {
 
-        var pTwoRanking = rankingDefiner.defineRanking(pTwoHand);
+            return decideEquality(playerOne, playerTwo);
+        }
 
-        pTwoHand.setRankingEnum(pTwoRanking.rankingEnum());
-        pTwoHand.setHighestValueRanking(pTwoRanking.card().getValue());
-
-        return winner(pOneHand, pTwoHand);
+        return playerOne.getRankingEnum().getValue() > playerTwo.getRankingEnum().getValue();
     }
 
-    private boolean winner(Hand pOneHand, Hand pTwoHand) {
+    private void attachRankingTo(Hand aHand){
 
-        var pOneHandRankingValue = pOneHand.getRankingEnum().getValue();
-        var pTwoHandRankingvalue = pTwoHand.getRankingEnum().getValue();
+        var ranking = this.rankingDefiner.defineRanking(aHand);
 
-        if (pOneHandRankingValue > pTwoHandRankingvalue) {
+        aHand.setRankingEnum(ranking.rankingEnum());
+        aHand.setHighestValueRanking(ranking.card().getValue());
+    }
 
-            return true;
-        }
-        if (pOneHandRankingValue.equals(pTwoHandRankingvalue)) {
+    private boolean isADrawBasedOnRankingBetween(Hand playerOneHand, Hand playerTwoHand) {
 
-            return decideEquality(pOneHand, pTwoHand);
-        }
-
-        return false;
+        return playerOneHand.getRankingEnum().getValue().equals(playerTwoHand.getRankingEnum().getValue());
     }
 
     private boolean decideEquality(Hand pOneHand, Hand pTwoHand) {
 
-        var pOneCardValue = pOneHand.getHighestValueRanking().getValueOrdinal();
-        var pTwoCardValue = pTwoHand.getHighestValueRanking().getValueOrdinal();
+        if (this.isADrawBasedOnTheHighestValueRankingBetween(pOneHand, pTwoHand)) {
 
-        if (pOneCardValue > pTwoCardValue) {
-
-            return true;
+            return this.playerOneBreaksTheTieBasedOnHandCards(pOneHand, pTwoHand);
         }
-        if (pOneCardValue.equals(pTwoCardValue)) {
 
-            var pOneCards = pOneHand.getCards();
-            var pTwoCards = pTwoHand.getCards();
+        return pOneHand.getHighestValueRanking().getValueOrdinal() > pTwoHand.getHighestValueRanking().getValueOrdinal();
+    }
 
-            for (int i = 4; i >= 0; i--) {
+    private boolean playerOneBreaksTheTieBasedOnHandCards(Hand pOneHand, Hand pTwoHand) {
 
-                var pOneHighestCardValue = pOneCards.get(i).getValue().getValueOrdinal();
-                var pTwoHighestCardValue = pTwoCards.get(i).getValue().getValueOrdinal();
+        for (int i = 4; i >= 0; i--) {
 
-                if (pOneHighestCardValue > pTwoHighestCardValue) {
-                    return true;
-                }
-                if (pTwoHighestCardValue > pOneHighestCardValue) {
-                    return false;
-                }
+            var pOneHighestCardValue = pOneHand.getNCard(i).getValue().getValueOrdinal();
+            var pTwoHighestCardValue = pTwoHand.getNCard(i).getValue().getValueOrdinal();
+
+            if (pOneHighestCardValue.equals(pTwoHighestCardValue)) {
+
+                continue;
             }
+
+            return pOneHighestCardValue > pTwoHighestCardValue;
         }
 
         return false;
+    }
+
+    private boolean isADrawBasedOnTheHighestValueRankingBetween(Hand pOneHand, Hand pTwoHand) {
+
+        return pOneHand.getHighestValueRanking().getValueOrdinal().equals(pTwoHand.getHighestValueRanking().getValueOrdinal());
     }
 }
