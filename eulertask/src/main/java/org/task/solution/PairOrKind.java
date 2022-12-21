@@ -6,22 +6,24 @@ import org.task.model.Hand;
 import org.task.model.Pairs;
 import org.task.model.Ranking;
 
+import java.util.Optional;
+
 public class PairOrKind {
 
-    public Ranking get(Hand hand) {
+    public Optional<Ranking> get(Hand hand) {
 
         if (isFourOfAKind(hand)) {
 
-            return createRanking(RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2));
+            return Optional.of(createRanking(RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2)));
         }
 
         if (isTreeOfAKind(hand)) {
             if (isFullHouse(hand)) {
 
-                return createRanking(RankingEnum.FULL_HOUSE, hand.getNCard(2));
+                return Optional.of(createRanking(RankingEnum.FULL_HOUSE, hand.getNCard(2)));
             }
 
-            return createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2));
+            return Optional.of(createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2)));
         }
 
         if (isPair(hand)) {
@@ -32,15 +34,15 @@ public class PairOrKind {
 
             if (pairsCount == 1) {
 
-                return createRanking(RankingEnum.PAIR, card);
+                return Optional.of(createRanking(RankingEnum.PAIR, card));
             }
             if (pairsCount == 2) {
 
-                return createRanking(RankingEnum.TWO_PAIRS, card);
+                return Optional.of(createRanking(RankingEnum.TWO_PAIRS, card));
             }
         }
 
-        return null;
+        return Optional.empty();
     }
 
     private boolean isFullHouse(Hand hand) {

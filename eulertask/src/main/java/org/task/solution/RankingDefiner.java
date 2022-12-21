@@ -5,15 +5,13 @@ import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
 
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public class RankingDefiner {
 
     private final FlushOrStraight flushOrStraight;
     private final PairOrKind pairOrKind;
-
-    public RankingDefiner() {
-
-        this(new FlushOrStraight(), new PairOrKind());
-    }
 
     public RankingDefiner(FlushOrStraight flushOrStraight, PairOrKind pairOrKind) {
 
@@ -23,30 +21,17 @@ public class RankingDefiner {
 
     public Ranking defineRanking(Hand hand) {
 
-        var rankingFlushOrStraight = flushOrStraight.get(hand);
-        var rankingPairOrKind = pairOrKind.get(hand);
-
-        var rankingNonNull = getNonNull(rankingFlushOrStraight, rankingPairOrKind);
-
-        return rankingNonNull != null ?
-                rankingNonNull
-                : createRanking(hand.getNCard(4));
+        return this.getNonNullRankingOutta(hand).orElseGet(() -> createRankingWith(hand.getHigherCard()));
     }
 
-    private Ranking getNonNull(Ranking ...items) {
-
-        for(Ranking r : items) {
-
-            if (r != null) {
-
-                return r;
-            }
-        }
-
-        return null;
+    private Optional<Ranking> getNonNullRankingOutta(Hand hand) {
+        return Stream.of(this.flushOrStraight.get(hand), this.pairOrKind.get(hand))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findFirst();
     }
 
-    private Ranking createRanking(Card card) {
+    private Ranking createRankingWith(Card card) {
 
         return new Ranking(RankingEnum.HIGH_CARD, card);
     }

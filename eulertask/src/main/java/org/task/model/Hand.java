@@ -8,6 +8,8 @@ import java.util.List;
 
 public class Hand {
 
+    private static final int HIGHER_CARD_INDEX = 4;
+
     private final List<Card> cards;
 
     private RankingEnum rankingEnum;
@@ -49,12 +51,21 @@ public class Hand {
 
     public Card getNCard(int cardNumber) {
 
-        if (Boolean.FALSE.equals(isOrdered)) {
+        this.sortIfNecessary();
+        return this.cards.get(cardNumber);
+    }
+
+    public Card getHigherCard(){
+
+        return this.getNCard(HIGHER_CARD_INDEX);
+    }
+
+    private void sortIfNecessary(){
+
+        if (!this.isOrdered) {
 
             this.cards.sort(new CardValuesComparator());
             this.isOrdered = true;
         }
-
-        return this.cards.get(cardNumber);
     }
 }
