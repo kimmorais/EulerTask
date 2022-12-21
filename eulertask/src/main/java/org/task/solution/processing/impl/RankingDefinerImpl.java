@@ -16,7 +16,7 @@ public class RankingDefinerImpl implements RankingDefiner {
     private final FlushOrStraight flushOrStraight;
     private final PairOrKind pairOrKind;
 
-    public RankingDefinerImpl(FlushOrStraight flushOrStraight, PairOrKindImpl pairOrKind) {
+    public RankingDefinerImpl(FlushOrStraight flushOrStraight, PairOrKind pairOrKind) {
 
         this.flushOrStraight = flushOrStraight;
         this.pairOrKind = pairOrKind;

@@ -6,21 +6,41 @@ import org.task.model.Hand;
 import org.task.model.Pairs;
 import org.task.model.Ranking;
 import org.task.solution.processing.PairOrKind;
+import org.task.solution.ranking_validators.four_of_a_kind.FourOfAKindValidator;
+import org.task.solution.ranking_validators.full_house.FullHouseValidator;
+import org.task.solution.ranking_validators.pair.PairValidator;
+import org.task.solution.ranking_validators.three_of_a_kind.ThreeOfAKindValidator;
 
 import java.util.Optional;
 
 public class PairOrKindImpl implements PairOrKind {
 
+    private final FourOfAKindValidator fourOfAKindValidator;
+    private final ThreeOfAKindValidator threeOfAKindValidator;
+    private final FullHouseValidator fullHouseValidator;
+    private final PairValidator pairValidator;
+
+    public PairOrKindImpl(FourOfAKindValidator fourOfAKindValidator, ThreeOfAKindValidator threeOfAKindValidator, FullHouseValidator fullHouseValidator, PairValidator pairValidator) {
+
+        this.fourOfAKindValidator = fourOfAKindValidator;
+        this.threeOfAKindValidator = threeOfAKindValidator;
+        this.fullHouseValidator = fullHouseValidator;
+        this.pairValidator = pairValidator;
+    }
+
     @Override
     public Optional<Ranking> get(Hand hand) {
 
-        if (isFourOfAKind(hand)) {
+        var isFourOfAKind = this.fourOfAKindValidator.isCompatibleWith(hand);
+        if (isFourOfAKind) {
 
             return Optional.of(createRanking(RankingEnum.FOUR_OF_A_KIND, hand.getNCard(2)));
         }
 
-        if (isTreeOfAKind(hand)) {
-            if (isFullHouse(hand)) {
+        var isThreeOfAKind = this.threeOfAKindValidator.isCompatibleWith(hand);
+        if (isThreeOfAKind) {
+            var isFullHouse = this.fullHouseValidator.isCompatibleWith(hand);
+            if (isFullHouse) {
 
                 return Optional.of(createRanking(RankingEnum.FULL_HOUSE, hand.getNCard(2)));
             }
@@ -28,7 +48,8 @@ public class PairOrKindImpl implements PairOrKind {
             return Optional.of(createRanking(RankingEnum.THREE_OF_A_KIND, hand.getNCard(2)));
         }
 
-        if (isPair(hand)) {
+        var isPair = this.pairValidator.isCompatibleWith(hand);
+        if (isPair) {
 
             var pairs = countPairs(hand);
             var pairsCount = pairs.pairsCount();
@@ -45,57 +66,6 @@ public class PairOrKindImpl implements PairOrKind {
         }
 
         return Optional.empty();
-    }
-
-    private boolean isFullHouse(Hand hand) {
-
-        var firstCardValue = hand.getNCard(0).getValue();
-        var secondCardValue = hand.getNCard(1).getValue();
-        var thirdCardValue = hand.getNCard(2).getValue();
-        var fourthCardValue = hand.getNCard(3).getValue();
-        var fifthCardValue = hand.getNCard(4).getValue();
-
-        return (firstCardValue == thirdCardValue && fourthCardValue == fifthCardValue)
-                || (firstCardValue == secondCardValue && thirdCardValue == fifthCardValue);
-    }
-
-    private boolean isFourOfAKind(Hand hand) {
-
-        var firstCardValue = hand.getNCard(0).getValue();
-        var fourthCardValue = hand.getNCard(3).getValue();
-        var secondCardValue = hand.getNCard(1).getValue();
-        var fifthCardValue = hand.getNCard(4).getValue();
-
-        return firstCardValue == fourthCardValue || secondCardValue == fifthCardValue;
-    }
-
-    private boolean isPair(Hand hand) {
-
-        for (int i = 0; i < 4; i++) {
-
-            var currentCardValue = hand.getNCard(i).getValue();
-            var nextCardValue = hand.getNCard(i + 1).getValue();
-
-            if (currentCardValue == nextCardValue)  {
-
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private boolean isTreeOfAKind(Hand hand) {
-
-        var firstCardValue = hand.getNCard(0).getValue();
-        var secondCardValue = hand.getNCard(1).getValue();
-        var thirdCardValue = hand.getNCard(2).getValue();
-        var fourthCardValue = hand.getNCard(3).getValue();
-        var fifthCardValue = hand.getNCard(4).getValue();
-
-        return firstCardValue == thirdCardValue
-                || secondCardValue == fourthCardValue
-                || thirdCardValue == fifthCardValue;
     }
 
     private Pairs countPairs(Hand hand) {
