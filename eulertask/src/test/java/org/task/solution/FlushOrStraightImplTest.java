@@ -21,8 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.when;
 import static org.task.constants.RankingEnum.*;
 import static org.task.constants.ValueEnum.*;
 
@@ -50,6 +51,10 @@ class FlushOrStraightImplTest {
         hand = buildHand(TEN, JACK, QUEEN, KING, ACE);
         var expectedRanking = Optional.of(buildExpectedRanking(ROYAL_FLUSH, getCard(ACE)));
 
+        when(this.flushValidator.isCompatibleWith(hand)).thenReturn(true);
+        when(this.straightValidator.isCompatibleWith(hand)).thenReturn(false);
+        when(this.royalValidator.isCompatibleWith(hand)).thenReturn(true);
+
         var result = flushOrStraight.get(hand);
 
         assertEquals(expectedRanking, result);
@@ -61,6 +66,10 @@ class FlushOrStraightImplTest {
 
         hand = buildHand(NINE, TEN, JACK, QUEEN, KING);
         var expectedRanking = Optional.of(buildExpectedRanking(STRAIGHT_FLUSH, getCard(KING)));
+
+        when(this.flushValidator.isCompatibleWith(hand)).thenReturn(true);
+        when(this.straightValidator.isCompatibleWith(hand)).thenReturn(true);
+        when(this.royalValidator.isCompatibleWith(hand)).thenReturn(false);
 
         var result = flushOrStraight.get(hand);
 
@@ -74,6 +83,10 @@ class FlushOrStraightImplTest {
         hand = buildHand(TWO, TEN, EIGHT, QUEEN, ACE);
         var expectedRanking = Optional.of(buildExpectedRanking(FLUSH, getCard(ACE)));
 
+        when(this.flushValidator.isCompatibleWith(hand)).thenReturn(true);
+        when(this.straightValidator.isCompatibleWith(hand)).thenReturn(false);
+        when(this.royalValidator.isCompatibleWith(hand)).thenReturn(false);
+
         var result = flushOrStraight.get(hand);
 
         assertEquals(expectedRanking, result);
@@ -86,20 +99,28 @@ class FlushOrStraightImplTest {
         hand = buildStraightHand();
         var expectedRanking = Optional.of(buildExpectedRanking(STRAIGHT, getCard(SEVEN)));
 
+        when(this.flushValidator.isCompatibleWith(hand)).thenReturn(false);
+        when(this.straightValidator.isCompatibleWith(hand)).thenReturn(true);
+        when(this.royalValidator.isCompatibleWith(hand)).thenReturn(false);
+
         var result = flushOrStraight.get(hand);
 
         assertEquals(expectedRanking, result);
     }
 
     @Test
-    @DisplayName("Given a valid hand for PAIR, should return null")
+    @DisplayName("Given a valid hand for PAIR, should return empty optional")
     void get_validHandForPair_returnNull() {
 
         hand = buildPairHand();
 
+        when(this.flushValidator.isCompatibleWith(hand)).thenReturn(false);
+        when(this.straightValidator.isCompatibleWith(hand)).thenReturn(false);
+        when(this.royalValidator.isCompatibleWith(hand)).thenReturn(false);
+
         var result = flushOrStraight.get(hand);
 
-        assertNull(result);
+        assertThat(result).isEmpty();
     }
 
     private Ranking buildExpectedRanking(RankingEnum rankingEnum, Card card) {

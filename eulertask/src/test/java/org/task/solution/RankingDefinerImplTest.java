@@ -41,7 +41,6 @@ class RankingDefinerImplTest {
     @BeforeEach
     void setUp() {
 
-        rankingDefiner = new RankingDefinerImpl(flushOrStraight, pairOrKind);
         hand = buildHand();
     }
 
@@ -65,7 +64,7 @@ class RankingDefinerImplTest {
 
         var threeOfAKindRanking = createThreeOfAKindRanking();
 
-        when(flushOrStraight.get(hand)).thenReturn(null);
+        when(flushOrStraight.get(hand)).thenReturn(Optional.empty());
         when(pairOrKind.get(hand)).thenReturn(Optional.of(threeOfAKindRanking));
 
         var result = rankingDefiner.defineRanking(hand);
@@ -79,8 +78,8 @@ class RankingDefinerImplTest {
 
         var highCardRanking = createHighCardRanking();
 
-        when(flushOrStraight.get(hand)).thenReturn(null);
-        when(pairOrKind.get(hand)).thenReturn(null);
+        when(flushOrStraight.get(hand)).thenReturn(Optional.empty());
+        when(pairOrKind.get(hand)).thenReturn(Optional.empty());
 
         var result = rankingDefiner.defineRanking(hand);
 

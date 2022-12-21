@@ -13,7 +13,9 @@ import org.task.solution.interfaces.impl.PairOrKindImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.task.constants.RankingEnum.*;
 import static org.task.constants.ValueEnum.*;
@@ -35,7 +37,7 @@ class PairOrKindImplTest {
     void get_validHandForFourOfAKind_returnFourOfAKindRanking() {
 
         hand = buildHand(THREE, THREE, THREE, THREE, FIVE);
-        var expectedRanking = buildExpectedRanking(FOUR_OF_A_KIND, getCard(THREE));
+        var expectedRanking = Optional.of(buildExpectedRanking(FOUR_OF_A_KIND, getCard(THREE)));
 
         var result = pairOrKind.get(hand);
 
@@ -47,7 +49,7 @@ class PairOrKindImplTest {
     void get_validHandForFullHouse_returnFullHouseRanking() {
 
         hand = buildHand(THREE, THREE, THREE, FIVE, FIVE);
-        var expectedRanking = buildExpectedRanking(FULL_HOUSE, getCard(THREE));
+        var expectedRanking = Optional.of(buildExpectedRanking(FULL_HOUSE, getCard(THREE)));
 
         var result = pairOrKind.get(hand);
 
@@ -59,7 +61,7 @@ class PairOrKindImplTest {
     void get_validHandForPair_returnPairRanking() {
 
         hand = buildHand(THREE, THREE, TWO, SIX, FIVE);
-        var expectedRanking = buildExpectedRanking(PAIR, getCard(THREE));
+        var expectedRanking = Optional.of(buildExpectedRanking(PAIR, getCard(THREE)));
 
         var result = pairOrKind.get(hand);
 
@@ -71,7 +73,7 @@ class PairOrKindImplTest {
     void get_validHandForTwoPairs_returnTwoPairsRanking() {
 
         hand = buildHand(THREE, THREE, FOUR, FOUR, FIVE);
-        var expectedRanking = buildExpectedRanking(TWO_PAIRS, getCard(FOUR));
+        var expectedRanking = Optional.of(buildExpectedRanking(TWO_PAIRS, getCard(FOUR)));
 
         var result = pairOrKind.get(hand);
 
@@ -83,7 +85,7 @@ class PairOrKindImplTest {
     void get_validHandForThreeOfAKind_returnThreeOfAKindRanking() {
 
         hand = buildHand(THREE, THREE, THREE, FOUR, FIVE);
-        var expectedRanking = buildExpectedRanking(THREE_OF_A_KIND, getCard(THREE));
+        var expectedRanking = Optional.of(buildExpectedRanking(THREE_OF_A_KIND, getCard(THREE)));
 
         var result = pairOrKind.get(hand);
 
@@ -91,14 +93,14 @@ class PairOrKindImplTest {
     }
 
     @Test
-    @DisplayName("Given a valid hand for STRAIGHT_FLUSH, should return null")
-    void get_validHandForStraightFlush_returnStraightFlushRanking() {
+    @DisplayName("Given a valid hand for STRAIGHT_FLUSH, should return empty optional")
+    void get_validHandForStraightFlush_returnNull() {
 
         hand = buildHand(NINE, TEN, JACK, QUEEN, KING);
 
         var result = pairOrKind.get(hand);
 
-        assertNull(result);
+        assertThat(result).isEmpty();
     }
 
     private Ranking buildExpectedRanking(RankingEnum rankingEnum, Card card) {
