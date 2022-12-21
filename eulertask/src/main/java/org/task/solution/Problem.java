@@ -12,11 +12,6 @@ public class Problem {
 
     private final Decider decider;
 
-    public Problem() {
-
-        this(new Decider());
-    }
-
     public Problem(Decider decider) {
 
         this.decider = decider;

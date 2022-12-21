@@ -17,6 +17,7 @@ public class RoyalValidatorImpl implements RoyalValidator {
 
     @Override
     public boolean isCompatibleWith(Hand hand) {
+
         return ROYAL_VALIDATION_RULES.keySet()
                 .stream()
                 .allMatch(key -> hand.getNCard(key).getValue().equals(ROYAL_VALIDATION_RULES.get(key)));

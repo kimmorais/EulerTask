@@ -7,11 +7,6 @@ public class Decider {
 
     private final RankingDefiner rankingDefiner;
 
-    public Decider() {
-
-        this(new RankingDefiner());
-    }
-
     public Decider(RankingDefiner rankingDefiner) {
 
         this.rankingDefiner = rankingDefiner;

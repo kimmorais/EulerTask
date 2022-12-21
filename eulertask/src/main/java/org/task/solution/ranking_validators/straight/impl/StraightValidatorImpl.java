@@ -15,9 +15,10 @@ public class StraightValidatorImpl implements StraightValidator {
         return hand.getCards().stream().allMatch(validatorAux::execute);
     }
 
-    private static class ValidatorAux{
+    private static class ValidatorAux {
 
         private final List<Card> cards;
+
         public ValidatorAux(List<Card> cards){
 
             this.cards = cards;

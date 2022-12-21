@@ -1,40 +1,53 @@
 package org.task.solution;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.task.constants.RankingEnum;
 import org.task.constants.SuitEnum;
 import org.task.constants.ValueEnum;
 import org.task.model.Card;
 import org.task.model.Hand;
 import org.task.model.Ranking;
+import org.task.solution.ranking_validators.flush.FlushValidator;
+import org.task.solution.ranking_validators.royal.RoyalValidator;
+import org.task.solution.ranking_validators.straight.StraightValidator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.task.constants.RankingEnum.*;
 import static org.task.constants.ValueEnum.*;
 
+@ExtendWith(MockitoExtension.class)
 class FlushOrStraightTest {
 
     private Hand hand;
+
+    @Mock
+    private FlushValidator flushValidator;
+
+    @Mock
+    private StraightValidator straightValidator;
+
+    @Mock
+    private RoyalValidator royalValidator;
+
+    @InjectMocks
     private FlushOrStraight flushOrStraight;
-
-    @BeforeEach
-    void setUp() {
-
-        this.flushOrStraight = new FlushOrStraight();
-    }
 
     @Test
     @DisplayName("Given a valid hand for ROYAL_FLUSH, should return Ranking with this enum and the higher card inside")
     void get_validHandForRoyalFlush_returnRoyalFlushRanking() {
 
         hand = buildHand(TEN, JACK, QUEEN, KING, ACE);
-        var expectedRanking = buildExpectedRanking(ROYAL_FLUSH, getCard(ACE));
+        var expectedRanking = Optional.of(buildExpectedRanking(ROYAL_FLUSH, getCard(ACE)));
 
         var result = flushOrStraight.get(hand);
 
@@ -46,7 +59,7 @@ class FlushOrStraightTest {
     void get_validHandForStraightFlush_returnStraightFlushRanking() {
 
         hand = buildHand(NINE, TEN, JACK, QUEEN, KING);
-        var expectedRanking = buildExpectedRanking(STRAIGHT_FLUSH, getCard(KING));
+        var expectedRanking = Optional.of(buildExpectedRanking(STRAIGHT_FLUSH, getCard(KING)));
 
         var result = flushOrStraight.get(hand);
 
@@ -58,7 +71,7 @@ class FlushOrStraightTest {
     void get_validHandForFlush_returnFlushRanking() {
 
         hand = buildHand(TWO, TEN, EIGHT, QUEEN, ACE);
-        var expectedRanking = buildExpectedRanking(FLUSH, getCard(ACE));
+        var expectedRanking = Optional.of(buildExpectedRanking(FLUSH, getCard(ACE)));
 
         var result = flushOrStraight.get(hand);
 
@@ -70,7 +83,7 @@ class FlushOrStraightTest {
     void get_validHandForStraight_returnStraightRanking() {
 
         hand = buildStraightHand();
-        var expectedRanking = buildExpectedRanking(STRAIGHT, getCard(SEVEN));
+        var expectedRanking = Optional.of(buildExpectedRanking(STRAIGHT, getCard(SEVEN)));
 
         var result = flushOrStraight.get(hand);
 

@@ -25,23 +25,25 @@ public class FlushOrStraight {
 
     public Optional<Ranking> get(Hand hand) {
 
+        var flush = this.flushValidator.isCompatibleWith(hand);
         var straight = this.straightValidator.isCompatibleWith(hand);
+        var royal = this.royalValidator.isCompatibleWith(hand);
 
-        if (this.flushValidator.isCompatibleWith(hand)) {
+        if (flush) {
 
-            if (this.royalValidator.isCompatibleWith(hand)) {
-                return Optional.of(createRanking(RankingEnum.ROYAL_FLUSH, hand.getNCard(4)));
+            if (royal) {
+                return Optional.of(createRanking(RankingEnum.ROYAL_FLUSH, hand.getHigherCard()));
             }
             if (straight) {
-                return Optional.of(createRanking(RankingEnum.STRAIGHT_FLUSH, hand.getNCard(4)));
+                return Optional.of(createRanking(RankingEnum.STRAIGHT_FLUSH, hand.getHigherCard()));
             }
 
-            return Optional.of(createRanking(RankingEnum.FLUSH, hand.getNCard(4)));
+            return Optional.of(createRanking(RankingEnum.FLUSH, hand.getHigherCard()));
         }
 
         if (straight) {
 
-            return Optional.of(createRanking(RankingEnum.STRAIGHT, hand.getNCard(4)));
+            return Optional.of(createRanking(RankingEnum.STRAIGHT, hand.getHigherCard()));
         }
 
         return Optional.empty();
